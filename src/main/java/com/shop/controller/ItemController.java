@@ -2,6 +2,7 @@ package com.shop.controller;
 
 import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
+import com.shop.dto.MainItemDto;
 import com.shop.entity.Item;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,15 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
+
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId){
+
+        ItemFormDto itemFormDto = itemService.getItemDto(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "/item/itemDtl";
+    }
+
 
     /**
      * 아이템 등록 화면
@@ -143,6 +153,7 @@ public class ItemController {
 
         return "item/itemMng";
     }
+
 
 
 }
