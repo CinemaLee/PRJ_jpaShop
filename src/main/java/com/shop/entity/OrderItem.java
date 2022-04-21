@@ -31,6 +31,12 @@ public class OrderItem extends BaseEntity{
 
     private int count; // 수량
 
+    /**
+     * 주문 아이템 생성
+     * @param item
+     * @param count
+     * @return
+     */
     public static OrderItem createOrderItem(Item item, int count){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
